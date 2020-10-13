@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  laptime: 2020-10-13 13:00:26
+
+two:
+  laptime: 2020-10-13 13:00:26

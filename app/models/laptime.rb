@@ -1,0 +1,2 @@
+class Laptime < ApplicationRecord
+end
