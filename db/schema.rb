@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2020_10_13_183142) do
   create_table "circuits_seasons", id: false, force: :cascade do |t|
     t.integer "circuit_id", null: false
     t.integer "season_id", null: false
+    t.index ["circuit_id", "season_id"], name: "index_circuits_seasons_on_circuit_id_and_season_id"
+    t.index ["season_id", "circuit_id"], name: "index_circuits_seasons_on_season_id_and_circuit_id"
   end
 
   create_table "drivers", force: :cascade do |t|
