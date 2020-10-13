@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_180953) do
+ActiveRecord::Schema.define(version: 2020_10_13_181614) do
+
+  create_table "circuits", force: :cascade do |t|
+    t.string "name"
+    t.string "locality"
+    t.string "country"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "drivers", force: :cascade do |t|
     t.string "first_name"
@@ -26,8 +35,11 @@ ActiveRecord::Schema.define(version: 2020_10_13_180953) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "driver_id", null: false
+    t.integer "circuit_id", null: false
+    t.index ["circuit_id"], name: "index_laptimes_on_circuit_id"
     t.index ["driver_id"], name: "index_laptimes_on_driver_id"
   end
 
+  add_foreign_key "laptimes", "circuits"
   add_foreign_key "laptimes", "drivers"
 end
