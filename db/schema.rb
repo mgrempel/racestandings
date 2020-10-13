@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_181614) do
+ActiveRecord::Schema.define(version: 2020_10_13_182047) do
 
   create_table "circuits", force: :cascade do |t|
     t.string "name"
@@ -36,10 +36,20 @@ ActiveRecord::Schema.define(version: 2020_10_13_181614) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "driver_id", null: false
     t.integer "circuit_id", null: false
+    t.integer "season_id", null: false
     t.index ["circuit_id"], name: "index_laptimes_on_circuit_id"
     t.index ["driver_id"], name: "index_laptimes_on_driver_id"
+    t.index ["season_id"], name: "index_laptimes_on_season_id"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.integer "year"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "laptimes", "circuits"
   add_foreign_key "laptimes", "drivers"
+  add_foreign_key "laptimes", "seasons"
 end
