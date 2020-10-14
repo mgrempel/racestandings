@@ -10,6 +10,7 @@ require "json"
 
 # Wipe the tables
 Driver.destroy_all
+Season.destroy_all
 
 # API endpoints
 drivers_url = "http://ergast.com/api/f1/drivers.json"
