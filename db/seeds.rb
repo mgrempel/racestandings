@@ -21,7 +21,8 @@ driver_data = JSON.parse(response)
 
 drivers = driver_data["MRData"]["DriverTable"]["Drivers"]
 drivers.each do |driver|
-  Driver.create(first_name: driver["givenName"])
+  Driver.create(first_name: driver["givenName"],
+                last_name:  driver["familyName"])
 end
 
 # handle driver data
