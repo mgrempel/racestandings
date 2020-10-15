@@ -31,16 +31,31 @@ drivers.each do |driver|
                 driverid:    driver["driverId"])
 end
 
-# Populate seasons
+# Populate seasons and circuits
 season_uri = URI(seasons_url)
 season_response = Net::HTTP.get(season_uri)
 season_data = JSON.parse(season_response)
 
 seasons = season_data["MRData"]["SeasonTable"]["Seasons"]
 seasons.each do |season|
-  Season.create(year: season["season"],
-                url:  season["url"])
+  current_season = Season.new(year: season["season"],
+                              url:  season["url"])
+  # Now to get the tracks assoiated with each season.
+
+  # API path for courses for the year
+  circuit_url = "http://ergast.com/api/f1/#{current_season.year}/circuits.json"
+  circuit_uri = URI(circuit_url)
+  circuit_response = Net::HTTP.get(circuit_uri)
+  circuit_data = JSON.parse(circuit_response)
+  circuits = circuit_data["MRData"]["CircuitTable"]["Circuits"]
+
+  # We've gotten the circuits for the current season, we need to check if those circuits exist.
+  circuits.each do |circuit|
+    puts circuit["circuitId"]
+  end
 end
+
+# Populate Circuits
 
 # handle driver data
 # driver_data.each do |driver|
