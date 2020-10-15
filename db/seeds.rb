@@ -51,8 +51,14 @@ seasons.each do |season|
 
   # We've gotten the circuits for the current season, we need to check if those circuits exist.
   circuits.each do |circuit|
-    puts circuit["circuitId"]
+    current_circuit = Circuit.find_or_create_by(name:      circuit["circuitName"],
+                                                circuitid: circuit["circuitId"],
+                                                url:       circuit["url"],
+                                                locality:  circuit["Location"]["locality"],
+                                                country:   circuit["Location"]["country"])
+    current_season.circuits << current_circuit
   end
+  current_season.save
 end
 
 # Populate Circuits
