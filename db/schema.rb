@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_235701) do
+ActiveRecord::Schema.define(version: 2020_10_16_215407) do
 
   create_table "circuits", force: :cascade do |t|
     t.string "name"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_235701) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "driver_id", null: false
     t.integer "circuit_id", null: false
-    t.integer "season_id", null: false
+    t.integer "season_id"
     t.index ["circuit_id"], name: "index_laptimes_on_circuit_id"
     t.index ["driver_id"], name: "index_laptimes_on_driver_id"
     t.index ["season_id"], name: "index_laptimes_on_season_id"

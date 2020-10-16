@@ -1,5 +1,5 @@
 class Laptime < ApplicationRecord
   has_one :driver
-  has_one :circuit
-  has_one :season
+  has_one :circuit, optional: true
+  has_one :season,  optional: true
 end

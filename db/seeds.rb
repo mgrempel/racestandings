@@ -11,10 +11,12 @@ require "json"
 # Wipe the tables
 Driver.destroy_all
 Season.destroy_all
+Circuit.destroy_all
+Laptime.destroy_all
 
 # API endpoints
-drivers_url = "http://ergast.com/api/f1/drivers.json"
-seasons_url = "http://ergast.com/api/f1/seasons.json"
+drivers_url = "http://ergast.com/api/f1/drivers.json?limit=1000"
+seasons_url = "http://ergast.com/api/f1/seasons.json?limit=71"
 
 # Populate drivers
 driver_uri = URI(drivers_url)
@@ -54,22 +56,45 @@ seasons.each do |season|
 
   # We've gotten the circuits for the current season, we need to check if those circuits exist.
   circuits.each do |circuit|
+    rounds += 1
     current_circuit = Circuit.find_or_create_by(name:      circuit["circuitName"],
                                                 circuitid: circuit["circuitId"],
                                                 url:       circuit["url"],
                                                 locality:  circuit["Location"]["locality"],
                                                 country:   circuit["Location"]["country"])
     current_season.circuits << current_circuit
-    rounds += 1
+    # Now let's check the laptimes for each circuit (getting the first lap, API no longer supports best times)
+    # times were only recorded after 1996, let's account for that
+    next unless current_season.year.to_i >= 1996
+
+    laptime_url = "http://ergast.com/api/f1/#{current_season.year}/#{rounds}/laps/1.json"
+    laptime_uri = URI(laptime_url)
+    laptime_response = Net::HTTP.get(laptime_uri)
+    laptime_data = JSON.parse(laptime_response)
+    laptimes = laptime_data["MRData"]["RaceTable"]["Races"][0]["Laps"][0]["Timings"]
+
+    laptimes.each do |laptime|
+      racer = Driver.where(driverid: laptime["driverId"])
+      current_laptime = racer.laptimes.build(laptime: laptime["time"])
+
+      # Associate to Season
+      current_season.laptimes << current_laptime
+      current_season.save
+
+      # Associate to Circuit
+      current_circuit.laptimes << current_laptime
+      current_circuit.save
+
+      # Associate to Driver
+      racer.save
+
+      # current_laptime.save
+      # racer.save
+      # current_season.save
+      # current_circuit.save
+    end
   end
   current_season.round = rounds
+
   current_season.save
 end
-
-# Populate Circuits
-
-# handle driver data
-# driver_data.each do |driver|
-#   puts "segment start"
-#   puts driver
-# end
