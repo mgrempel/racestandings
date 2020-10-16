@@ -49,6 +49,9 @@ seasons.each do |season|
   circuit_data = JSON.parse(circuit_response)
   circuits = circuit_data["MRData"]["CircuitTable"]["Circuits"]
 
+  # How many rounds do we have?
+  rounds = 0
+
   # We've gotten the circuits for the current season, we need to check if those circuits exist.
   circuits.each do |circuit|
     current_circuit = Circuit.find_or_create_by(name:      circuit["circuitName"],
@@ -57,7 +60,9 @@ seasons.each do |season|
                                                 locality:  circuit["Location"]["locality"],
                                                 country:   circuit["Location"]["country"])
     current_season.circuits << current_circuit
+    rounds += 1
   end
+  current_season.round = rounds
   current_season.save
 end
 
