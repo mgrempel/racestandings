@@ -9,10 +9,10 @@ require "net/http"
 require "json"
 
 # Wipe the tables
-Driver.destroy_all
-Season.destroy_all
-Circuit.destroy_all
 Laptime.destroy_all
+Driver.destroy_all
+Circuit.destroy_all
+Season.destroy_all
 
 # API endpoints
 drivers_url = "http://ergast.com/api/f1/drivers.json?limit=1000"
@@ -65,7 +65,8 @@ seasons.each do |season|
     current_season.circuits << current_circuit
     # Now let's check the laptimes for each circuit (getting the first lap, API no longer supports best times)
     # times were only recorded after 1996, let's account for that
-    next unless current_season.year.to_i >= 1996
+    puts current_season.year
+    next unless current_season.year.to_i >= 1996 && current_season.year.to_i < 2020
 
     laptime_url = "http://ergast.com/api/f1/#{current_season.year}/#{rounds}/laps/1.json"
     laptime_uri = URI(laptime_url)
@@ -73,8 +74,10 @@ seasons.each do |season|
     laptime_data = JSON.parse(laptime_response)
     laptimes = laptime_data["MRData"]["RaceTable"]["Races"][0]["Laps"][0]["Timings"]
 
+    next if laptimes.nil?
+
     laptimes.each do |laptime|
-      racer = Driver.where(driverid: laptime["driverId"])
+      racer = Driver.where(driverid: laptime["driverId"]).first
       current_laptime = racer.laptimes.build(laptime: laptime["time"])
 
       # Associate to Season
