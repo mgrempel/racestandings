@@ -1,1 +1,14 @@
-<h1>Home#about</h1>
+<h1>Welcome to my midterm project!</h1>
+<p>This application takes information from a Formula 1 API and parses it into some readable information.</p>
+<br/>
+<p>I will be pulling data from an F1 standing source located at http://ergast.com/api/f1/. This dataset contains information on formula 1 season standings from 1950 to 2020. The data I will be using is: Season information, driver information, laptime records, and circuits. The data will be organized into 4 main tables: Circuits, Seasons, Drivers and lap times.
+Columns: Seasons will contain the date of the series and a link to its Wikipedia article
+Circuits will contain information about which season they belong to (many to many relationship, new table will be required to resolve this), a URL to more information about the track, its locality and country.
+Drivers will contain information about a driver name, date of birth and nationality, along with a link to their Wikipedia page.
+Lap times will contain which driver they’re associated with, what track they were set on, and what season they were set, in addition to the actual time.
+
+Table relations: Seasons and circuits will have a many to many relationship as a circuit can be used in many seasons and a season will have many circuits. A season will have many drivers and a driver can race for many seasons. A driver will have several lap times associated with them. A lap time will belong to one driver, one season and one track.
+</p>
+<br/>
+<h2>Here's an ERD:</h2>
+<img src="/images/erd.jpg" alt="Model ERD">
