@@ -1,2 +1,10 @@
 <h1>Seasons#index</h1>
 <p>Find me in app/views/seasons/index.html.erb</p>
+
+<table>
+  <% @seasons.each do |season| %>
+    <tr>
+      <td><%= season.year %></td>
+    </tr>
+  <% end %>
+</table>
