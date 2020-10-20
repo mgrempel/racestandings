@@ -1,12 +1,12 @@
 <h1>Drivers#index</h1>
 <p>Find me in app/views/drivers/index.html.erb</p>
 
-<% @results.each do |result| %>
+<% @drivers.each do |driver| %>
   <tr>
-    <td><%= result.first_name %></td>
-    <td><%= result.last_name %></td>
-    <td><%= result.dob %></td>
-    <td><%= result.nationality %></td>
+    <td><%= driver.first_name %></td>
+    <td><%= driver.last_name %></td>
+    <td><%= driver.dob %></td>
+    <td><%= driver.nationality %></td>
     <br/>
   </tr>
   <% end %>
