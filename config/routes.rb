@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'circuits/index'
   get 'laptimes/index'
   get "drivers/index"
   get "home/index"
