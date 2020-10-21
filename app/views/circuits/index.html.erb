@@ -4,8 +4,7 @@
 <table>
   <% @circuits.each do |circuit| %>
     <tr>
-      <td><%= circuit.name %></td>
-      <td><%= circuit.locality %></td>
+      <td><%= link_to circuit.name, circuit_path(circuit) %></td>
       <td><%= circuit.country %></td>
     </tr>
   <% end %>
