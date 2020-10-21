@@ -1,6 +1,6 @@
 class Laptime < ApplicationRecord
-  has_one :driver
-  has_one :circuit, required: false
-  has_one :season,  required: false
+  belongs_to :driver
+  belongs_to :circuit, optional: true
+  belongs_to :season,  optional: true
   validates :laptime, :driver_id, presence: true
 end
