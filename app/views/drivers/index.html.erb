@@ -4,8 +4,8 @@
 <table>
   <% @drivers.each do |driver| %>
     <tr>
-      <td><%= driver.first_name %></td>
-      <td><%= driver.last_name %></td>
+      <td><%= link_to driver.first_name, driver_path(driver) %></td>
+      <td><%= link_to driver.last_name, driver_path(driver) %></td>
       <td><%= driver.dob %></td>
       <td><%= driver.nationality %></td>
     </tr>
