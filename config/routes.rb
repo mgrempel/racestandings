@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "circuits/index"
   get "/circuits/:id", to: "circuits#show", as: "circuit"
   get "laptimes/index"
+  get "/laptimes/:id", to: "laptimes#show", as: "laptime"
   get "drivers/index"
   get "/drivers/:id", to: "drivers#show", as: "driver"
   get "home/index"

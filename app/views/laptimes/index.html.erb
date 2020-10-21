@@ -4,7 +4,7 @@
 <table>
   <% @laptimes.each do |laptime| %>
   <tr>
-    <td><%= laptime.laptime %></td>
+    <td><%= link_to laptime.laptime, laptime_path(laptime) %></td>
   </tr>
   <% end %>
 </table>
