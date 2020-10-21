@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'seasons/index'
-  get 'circuits/index'
-  get 'laptimes/index'
+  get "seasons/index"
+  get "/seasons/:id", to: "seasons#show", as: "season"
+  get "circuits/index"
+  get "laptimes/index"
   get "drivers/index"
   get "home/index"
   get "home/about"

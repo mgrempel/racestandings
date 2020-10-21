@@ -4,7 +4,7 @@
 <table>
   <% @seasons.each do |season| %>
     <tr>
-      <td><%= season.year %></td>
+      <td><%= link_to season.year,  season_path(season)%></td>
     </tr>
   <% end %>
 </table>
