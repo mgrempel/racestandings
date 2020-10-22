@@ -5,7 +5,7 @@
   <h3><%= circuit.name %></h3>
     <ul>
     <% circuit.laptimes.where(season: @season).each do |laptime| %>
-      <li><%= laptime.driver.first_name %> <%= laptime.driver.last_name %> with a time of <%= laptime.laptime %></li>
+      <li><%=link_to laptime.driver.first_name, driver_path(laptime.driver)%> <%=link_to laptime.driver.last_name, driver_path(laptime.driver)%> with a time of <%=link_to laptime.laptime, laptime_path(laptime)%></li>
     <% end %>
   </ul>
 <% end %>
