@@ -2,3 +2,5 @@
 <h3><%= @laptime.driver.last_name %>, <%= @laptime.driver.first_name %></h3>
 <h3><%= @laptime.circuit.name %></h3>
 <h3><%= @laptime.season.year %></h3>
+
+<p>Set by <%= @laptime.driver.first_name %> <%= @laptime.driver.last_name %> on <%= @laptime.circuit.name %> in <%= @laptime.season.year %> </p>
