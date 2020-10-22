@@ -2,3 +2,10 @@
 <h3>Born: <%= @driver.dob %></h3>
 <h3>Nationality: <%= @driver.nationality %></h3>
 <h3>Wiki Article: <a href="<%= @driver.url %>">Article</a></h3>
+
+<h3>Laptimes</h3>
+<ul>
+  <% @driver.laptimes.each do |laptime| %>
+    <li><%= laptime.laptime %> in <%= laptime.season.year %> at <%= laptime.circuit.name %> </li>
+  <% end %>
+</ul>
