@@ -15,7 +15,7 @@
     <li>No results for circuits used before '96.</li>
   <% else %>
     <% @circuit.laptimes.each do |laptime| %>
-      <li><%= laptime.driver.first_name %> <%= laptime.driver.last_name %> set a time of <%= laptime.laptime %> in <%= laptime.season.year %></li>
+      <li><%=link_to laptime.driver.first_name, driver_path(laptime.driver)%> <%=link_to laptime.driver.last_name, driver_path(laptime.driver)%> set a time of <%=link_to laptime.laptime, laptime_path(laptime)%> in <%=link_to laptime.season.year, season_path(laptime.season)%></li>
     <% end %>
   <% end %>
 </ul>
