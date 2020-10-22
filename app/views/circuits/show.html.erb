@@ -1,3 +1,21 @@
 <h1><%= @circuit.name %></h1>
 <h3><%= @circuit.country %></h3>
 <h3><%= @circuit.locality %></h3>
+
+<h3>Seasons:</h3>
+<ul>
+  <% @circuit.seasons.each do |season| %>
+    <li><%= season.year %></li>
+  <% end %>
+</ul>
+
+<h3>Laptimes</h3>
+<ul>
+  <% if @circuit.laptimes.count == 0 %>
+    <li>No results for circuits used before '96.</li>
+  <% else %>
+    <% @circuit.laptimes.each do |laptime| %>
+      <li><%= laptime.driver.first_name %> <%= laptime.driver.last_name %> set a time of <%= laptime.laptime %> in <%= laptime.season.year %></li>
+    <% end %>
+  <% end %>
+</ul>
