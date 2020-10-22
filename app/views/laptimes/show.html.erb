@@ -3,4 +3,4 @@
 <h3><%= @laptime.circuit.name %></h3>
 <h3><%= @laptime.season.year %></h3>
 
-<p>Set by <%= @laptime.driver.first_name %> <%= @laptime.driver.last_name %> on <%= @laptime.circuit.name %> in <%= @laptime.season.year %> </p>
+<p>Set by <%=link_to @laptime.driver.first_name, driver_path(@laptime.driver)%> <%=link_to @laptime.driver.last_name, driver_path(@laptime.driver)%> on <%=link_to @laptime.circuit.name, circuit_path(@laptime.circuit)%> in <%=link_to @laptime.season.year, season_path(@laptime.season)%></p>
