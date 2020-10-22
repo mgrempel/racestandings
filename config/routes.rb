@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/drivers/:id", to: "drivers#show", as: "driver"
   get "home/index"
   get "home/about"
+  post "home/search", to: "home#search", as: "search"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "home#index"
 end
