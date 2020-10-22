@@ -6,6 +6,6 @@
 <h3>Laptimes</h3>
 <ul>
   <% @driver.laptimes.each do |laptime| %>
-    <li><%= laptime.laptime %> in <%= laptime.season.year %> at <%= laptime.circuit.name %> </li>
+    <li><%=link_to laptime.laptime, laptime_path(laptime)%> in <%=link_to laptime.season.year, season_path(laptime.season)%> at <%=link_to laptime.circuit.name, circuit_path(laptime.circuit)%> </li>
   <% end %>
 </ul>
