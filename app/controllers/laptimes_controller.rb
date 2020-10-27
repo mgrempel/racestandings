@@ -3,7 +3,7 @@ class LaptimesController < ApplicationController
     root_query = Laptime.includes(:season, :driver, :circuit).all
 
     unless params[:search] == ""
-      root_query = if params[:catagory] == "Laptimes"
+      root_query = if params[:category] == "Laptimes"
                      root_query.where(laptime: params[:search])
                    elsif params[:category] == "Circuits"
                      root_query.where(circuits: { name: params[:search] })

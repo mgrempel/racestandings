@@ -5,7 +5,7 @@
 <h3>Seasons:</h3>
 <ul>
   <% @circuit.seasons.each do |season| %>
-    <li><%= season.year %></li>
+    <li><%= link_to season.year, season_path(season) %></li>
   <% end %>
 </ul>
 
