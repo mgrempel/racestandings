@@ -1,7 +1,7 @@
 class CircuitsController < ApplicationController
   def index
     root_query = Circuit.includes(:seasons, :laptimes).all
-    unless params[:search] == ""
+    unless params[:search] == "" || params[:search].nil?
       root_query = if params[:category] == "Circuits"
                      root_query.where(name: params[:search])
                    elsif params[:category] == "Seasons"
