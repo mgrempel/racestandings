@@ -10,10 +10,13 @@
   </head>
 
   <body>
-  <h1>Testing Nav bar</h1>
+  <h1>F1 Race Standings</h1>
   <ul>
     <li><%= link_to "Home", "/" %></li>
-    <li>Option 2</li>
+    <li><%= link_to "Seasons", "/seasons/index" %></li>
+    <li><%= link_to "Circuits", "/circuits/index" %></li>
+    <li><%= link_to "Laptimes", "/laptimes/index" %></li>
+    <li><%= link_to "Drivers", "/drivers/index" %></li>
     <li><%= link_to "About Page", "/home/about" %></li>
   </ul>
     <%= yield %>
