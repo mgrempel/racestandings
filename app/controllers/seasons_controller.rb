@@ -6,7 +6,7 @@ class SeasonsController < ApplicationController
       root_query = if params[:category] == "Seasons"
                      root_query.where(year: params[:search])
                    elsif params[:category] == "Circuits"
-                     root_query.where(circuits: { year: params[:search] })
+                     root_query.where(circuits: { name: params[:search] })
                    else
                      root_query.where(laptimes: { laptime: params[:search] })
                    end
