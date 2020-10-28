@@ -13,6 +13,7 @@ class SeasonsController < ApplicationController
     end
     @seasons = root_query
     @categories = ["Seasons", "Circuits", "Laptimes"]
+    @current_selection = (params[:category] || @categories[0])
   end
 
   def show

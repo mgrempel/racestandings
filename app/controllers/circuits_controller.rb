@@ -12,6 +12,7 @@ class CircuitsController < ApplicationController
     end
     @circuits = root_query
     @categories = ["Circuits", "Seasons", "Laptimes"]
+    @current_selection = (params[:category] || @categories[0])
   end
 
   def show

@@ -11,6 +11,7 @@ class DriversController < ApplicationController
     end
     @drivers = root_query
     @categories = ["Drivers", "Laptimes"]
+    @current_selection = (params[:category] || @categories[0])
   end
 
   def show

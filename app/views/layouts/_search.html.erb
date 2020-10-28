@@ -1,5 +1,5 @@
 <%= form_tag action_name, :name => "searchForm", method: :get do %>
   <%= search_field_tag :search, params[:search], placeholder: "Search" %>
-  <%= select_tag :category, options_for_select(@categories) %>
+  <%= select_tag :category, options_for_select(@categories, @current_selection) %>
   <%= submit_tag "Search" %>
 <% end %>
