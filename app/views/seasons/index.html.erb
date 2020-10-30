@@ -1,11 +1,11 @@
-<h1>Seasons</h1>
+<div id="seasons-div" class="ml-4 mr-4">
+  <h1 class="title">Seasons</h1>
 
-<%= render 'layouts/search'%>
+  <%= render 'layouts/search'%>
 
-<table>
-  <% @seasons.each do |season| %>
-    <tr>
-      <td><%= link_to season.year,  season_path(season)%></td>
-    </tr>
-  <% end %>
-</table>
+  <ul id="seasons-ul">
+    <% @seasons.each do |season| %>
+      <li><%= link_to season.year,  season_path(season)%></li>
+    <% end %>
+  </ul>
+</div>
