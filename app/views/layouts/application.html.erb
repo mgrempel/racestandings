@@ -10,16 +10,33 @@
   </head>
 
   <body>
-  <h1>F1 Race Standings</h1>
-  <ul>
-    <li><%= link_to "Home", "/" %></li>
-    <li><%= link_to "Seasons", "/seasons/index" %></li>
-    <li><%= link_to "Circuits", "/circuits/index" %></li>
-    <li><%= link_to "Laptimes", "/laptimes/index" %></li>
-    <li><%= link_to "Drivers", "/drivers/index" %></li>
-    <li><%= link_to "About Page", "/home/about" %></li>
-  </ul>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="https://www.flaticon.com/svg/static/icons/svg/79/79700.svg" width="28" height="28">
+        </a>
+      </div>
+
+      <div id="mainNav" class="navbar-menu">
+        <div class="navbar-start">
+          <%= link_to "Home", "/", class: "navbar-item"%>
+
+          <%= link_to "Seasons", "/seasons/index", class: "navbar-item"%>
+
+          <%= link_to "Circuits", "/circuits/index", class: "navbar-item"%>
+
+          <%= link_to "Laptimes", "/laptimes/index", class: "navbar-item"%>
+
+          <%= link_to "Drivers", "/drivers/index", class: "navbar-item"%>
+        </div>
+
+        <div class="navbar-end">
+          <%= link_to "About", "/home/about", class: "navbar-item" %>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
 
   </body>
 </html>
+
