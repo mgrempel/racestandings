@@ -1,11 +1,11 @@
-<h1>Laptimes</h1>
+<div class="ml-4 mr-4">
+  <h1 class="title">Laptimes</h1>
 
-<%= render 'layouts/search' %>
+  <%= render 'layouts/search' %>
 
-<table>
-  <% @laptimes.each do |laptime| %>
-  <tr>
-    <td><%= link_to laptime.laptime, laptime_path(laptime) %></td>
-  </tr>
-  <% end %>
-</table>
+  <ul id="laptimes-ul">
+    <% @laptimes.each do |laptime| %>
+      <li><%= link_to laptime.laptime, laptime_path(laptime) %></li>
+    <% end %>
+  </ul>
+</div>
