@@ -1,11 +1,21 @@
-<h1><%= @driver.last_name %>, <%= @driver.first_name %></h1>
-<h3>Born: <%= @driver.dob %></h3>
-<h3>Nationality: <%= @driver.nationality %></h3>
-<h3>Wiki Article: <a href="<%= @driver.url %>">Article</a></h3>
-
-<h3>Laptimes</h3>
-<ul>
-  <% @driver.laptimes.each do |laptime| %>
-    <li><%=link_to laptime.laptime, laptime_path(laptime)%> in <%=link_to laptime.season.year, season_path(laptime.season)%> at <%=link_to laptime.circuit.name, circuit_path(laptime.circuit)%> </li>
+<div class="ml-4">
+  <h1 class="title"><%= @driver.last_name %>, <%= @driver.first_name %></h1>
+  <h3>Born: <%= @driver.dob %></h3>
+  <h3>Nationality: <%= @driver.nationality %></h3>
+  <h3>Wiki Article: <a href="<%= @driver.url %>">Article</a></h3>
+  <br>
+  <% if @driver.laptimes.count == 0 %>
+    <p>No laptimes available.</p>
+  <% else %>
+    <h3 class="title is-6">Laptimes</h3>
+    <table class="table">
+      <% @driver.laptimes.each do |laptime| %>
+        <tr>
+          <td><%=link_to laptime.laptime, laptime_path(laptime)%></td>
+          <td><%=link_to laptime.circuit.name, circuit_path(laptime.circuit)%></td>
+          <td><%=link_to laptime.season.year, season_path(laptime.season)%></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
-</ul>
+</div>
