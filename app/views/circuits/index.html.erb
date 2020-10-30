@@ -1,13 +1,15 @@
-<h1>Circuits</h1>
+<div class="ml-4">
+  <h1 class="title">Circuits</h1>
 
-<%= render 'layouts/search' %>
+  <%= render 'layouts/search' %>
 
-<table>
-  <% @circuits.each do |circuit| %>
-    <tr>
-      <td><%= link_to circuit.name, circuit_path(circuit) %></td>
-      <td><%= circuit.country %></td>
-    </tr>
-  <% end %>
-</table>
+  <table class="table">
+    <% @circuits.each do |circuit| %>
+      <tr>
+        <td><%= link_to circuit.name, circuit_path(circuit) %></td>
+        <td><%= circuit.country %></td>
+      </tr>
+    <% end %>
+  </table>
 
+</div>
