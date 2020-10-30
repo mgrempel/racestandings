@@ -1,11 +1,14 @@
-<h1><%= @season.year %></h1>
-<p><a href="<%= @season.url %>">Season wikipedia link</a></p>
-
-<% @season.circuits.each do |circuit| %>
-  <h3><%= circuit.name %></h3>
-    <ul>
-    <% circuit.laptimes.where(season: @season).each do |laptime| %>
-      <li><%=link_to laptime.driver.first_name, driver_path(laptime.driver)%> <%=link_to laptime.driver.last_name, driver_path(laptime.driver)%> with a time of <%=link_to laptime.laptime, laptime_path(laptime)%></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="ml-4">
+  <h1 class="title"><%= @season.year %></h1>
+  <p class="subtitle"><a href="<%= @season.url %>">Season wikipedia link</a></p>
+  <br>
+  <% @season.circuits.each do |circuit| %>
+    <h3 class="title is-5"><%= circuit.name %></h3>
+      <ul>
+      <% circuit.laptimes.where(season: @season).each do |laptime| %>
+        <li><%=link_to laptime.driver.first_name, driver_path(laptime.driver)%> <%=link_to laptime.driver.last_name, driver_path(laptime.driver)%> with a time of <%=link_to laptime.laptime, laptime_path(laptime)%></li>
+      <% end %>
+    </ul>
+    <br>
+  <% end %>
+</div>
