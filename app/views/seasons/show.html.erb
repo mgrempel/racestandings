@@ -4,11 +4,18 @@
   <br>
   <% @season.circuits.each do |circuit| %>
     <h3 class="title is-5"><%= circuit.name %></h3>
-      <ul>
+    <% if @season.year >= 1996 %>
+      <h4 class="subtitle">Lap times:</h4>
+    <% end %>
+      <table class="table">
       <% circuit.laptimes.where(season: @season).each do |laptime| %>
-        <li><%=link_to laptime.driver.first_name, driver_path(laptime.driver)%> <%=link_to laptime.driver.last_name, driver_path(laptime.driver)%> with a time of <%=link_to laptime.laptime, laptime_path(laptime)%></li>
+        <tr>
+          <td><%=link_to laptime.driver.first_name, driver_path(laptime.driver)%></td>
+          <td><%=link_to laptime.driver.last_name, driver_path(laptime.driver)%></td>
+          <td><%=link_to laptime.laptime, laptime_path(laptime)%></td>
+        </tr>
       <% end %>
-    </ul>
+    </table>
     <br>
   <% end %>
 </div>

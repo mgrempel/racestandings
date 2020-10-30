@@ -14,13 +14,17 @@
   <br>
   <br>
   <h3 class="title is-6">Laptimes</h3>
-  <ul>
-    <% if @circuit.laptimes.count == 0 %>
-      <li>No results for circuits used before '96.</li>
-    <% else %>
-      <% @circuit.laptimes.each do |laptime| %>
-        <li><%=link_to laptime.driver.first_name, driver_path(laptime.driver)%> <%=link_to laptime.driver.last_name, driver_path(laptime.driver)%> set a time of <%=link_to laptime.laptime, laptime_path(laptime)%> in <%=link_to laptime.season.year, season_path(laptime.season)%></li>
-      <% end %>
+  <% if @circuit.laptimes.count == 0 %>
+    <p>No results for circuits used before '96.</p>
+  <% else %>
+    <table class="table">
+    <% @circuit.laptimes.each do |laptime| %>
+      <tr>
+        <td><%=link_to laptime.driver.first_name, driver_path(laptime.driver)%></td>
+        <td><%=link_to laptime.driver.last_name, driver_path(laptime.driver)%></td>
+        <td><%=link_to laptime.laptime, laptime_path(laptime)%></td>
+        <td><%=link_to laptime.season.year, season_path(laptime.season)%></td>
+      </tr>
     <% end %>
-  </ul>
+  <% end %>
 </div>
